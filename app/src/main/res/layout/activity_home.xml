@@ -178,4 +178,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView android:id="@+id/tvEmpty" android:layout_width="0dp" android:layout_height="wrap_content"
+        android:text="No hay reportes" android:textSize="16sp" android:gravity="center" android:padding="24dp"
+        android:visibility="gone" app:layout_constraintTop_toBottomOf="@id/hsvChips"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation" app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

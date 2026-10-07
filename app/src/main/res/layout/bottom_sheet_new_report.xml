@@ -1,143 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="@color/white">
+<?xml version='1.0' encoding='utf-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp" android:background="@color/white">
 
-    <!-- Indicador superior desplegable -->
-    <View
-        android:layout_width="40dp"
-        android:layout_height="4dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:background="@color/colorSurfaceVariant" />
 
-    <!-- Título del Modal -->
-    <TextView
-        android:id="@+id/tvModalTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Crear Nuevo Reporte"
-        android:textColor="@color/colorTextPrimary"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    <View android:layout_width="40dp" android:layout_height="4dp" android:layout_gravity="center_horizontal" android:layout_marginBottom="16dp" android:background="@color/colorSurfaceVariant" />
 
-    <!-- Subtítulo informativo -->
-    <TextView
-        android:id="@+id/tvModalSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="20dp"
-        android:text="Reporta un problema en tu barrio para alertar a la comunidad y autoridades."
-        android:textColor="@color/colorTextSecondary"
-        android:textSize="14sp" />
 
-    <!-- 1. Campo para el Título -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilReportTitle"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:boxBackgroundColor="@color/colorSurfaceVariant"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
+    <TextView android:id="@+id/tvModalTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crear Nuevo Reporte" android:textColor="@color/colorTextPrimary" android:textSize="20sp" android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etReportTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Título de la incidencia"
-            android:inputType="textCapSentences"
-            android:textColor="@color/colorTextPrimary" />
+
+    <TextView android:id="@+id/tvModalSubtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginBottom="20dp" android:text="Reporta un problema en tu barrio para alertar a la comunidad y autoridades." android:textColor="@color/colorTextSecondary" android:textSize="14sp" />
+
+
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilReportTitle" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etReportTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Título de la incidencia" android:inputType="textCapSentences" android:textColor="@color/colorTextPrimary" android:maxLength="120" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- 2. Dropdown Desplegable de Categorías Cívicas -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilCategory"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        app:boxBackgroundColor="@color/colorSurfaceVariant"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
 
-        <AutoCompleteTextView
-            android:id="@+id/actCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Categoría cívica"
-            android:inputType="none"
-            android:textColor="@color/colorTextPrimary" />
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilCategory" style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp">
+
+        <AutoCompleteTextView android:id="@+id/actCategory" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Categoría cívica" android:inputType="none" android:textColor="@color/colorTextPrimary" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- 3. Campo de texto amplio para la Descripción -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilDescription"
-        style="@style/Widget.Material3.TextInputLayout.FilledBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:boxBackgroundColor="@color/colorSurfaceVariant"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
-        app:boxStrokeWidth="0dp"
-        app:boxStrokeWidthFocused="0dp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top"
-            android:hint="Descripción detallada del problema"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:textColor="@color/colorTextPrimary" />
+    <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilDescription" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp">
+
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="top" android:hint="Descripción detallada del problema" android:inputType="textMultiLine" android:minLines="3" android:textColor="@color/colorTextPrimary" android:maxLength="2000" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- 4. Botón para Adjuntar Foto -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAttachPhoto"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginBottom="20dp"
-        android:text="Adjuntar Foto del Incidente"
-        android:textColor="@color/colorTextPrimary"
-        app:cornerRadius="12dp"
-        app:icon="@android:drawable/ic_menu_camera"
-        app:iconGravity="textStart"
-        app:iconPadding="8dp"
-        app:iconTint="@color/colorPrimary"
-        app:strokeColor="@color/colorTextSecondary" />
 
-    <!-- 5. Botón Publicar Reporte -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSubmitReport"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Publicar Reporte"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:cornerRadius="12dp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnAttachPhoto" style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="20dp" android:text="Adjuntar Foto del Incidente" android:textColor="@color/colorTextPrimary" app:cornerRadius="12dp" app:icon="@android:drawable/ic_menu_camera" app:iconGravity="textStart" app:iconPadding="8dp" app:iconTint="@color/colorPrimary" app:strokeColor="@color/colorTextSecondary" />
+
+
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnSubmitReport" android:layout_width="match_parent" android:layout_height="56dp" android:text="Publicar Reporte" android:textSize="16sp" android:textStyle="bold" app:cornerRadius="12dp" />
 
 </LinearLayout>

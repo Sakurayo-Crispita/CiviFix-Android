@@ -1,287 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="@color/white"
-    tools:context=".MainActivity">
+<?xml version='1.0' encoding='utf-8'?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/white" tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
 
-        <!-- 1. Cabecera Visual CiviFix (MaterialCardView) -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardHeader"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            app:cardBackgroundColor="@color/colorPrimary"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        <com.google.android.material.card.MaterialCardView android:id="@+id/cardHeader" android:layout_width="0dp" android:layout_height="150dp" app:cardBackgroundColor="@color/colorPrimary" app:cardCornerRadius="16dp" app:cardElevation="2dp" app:strokeWidth="0dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/imgHeader"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Imagen Cajamarca"
-                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
 
-                <!-- Capa de gradiente oscuro para contraste y estilo visual -->
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#66000000" />
+                <ImageView android:id="@+id/imgHeader" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:contentDescription="Imagen Cajamarca" tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-                <!-- Logo / Badge CiviFix -->
-                <LinearLayout
-                    android:id="@+id/llHeaderBadge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:contentDescription="Logo CiviFix"
-                        android:src="@android:drawable/ic_menu_mylocation"
-                        app:tint="@color/white" />
+                <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#66000000" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="CiviFix • Cajamarca"
-                        android:textColor="@color/white"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+
+                <LinearLayout android:id="@+id/llHeaderBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16dp" android:gravity="center_vertical" android:orientation="horizontal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="Logo CiviFix" android:src="@android:drawable/ic_menu_mylocation" app:tint="@color/white" />
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="CiviFix • Cajamarca" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
 
                 </LinearLayout>
 
-                <!-- Título Lema -->
-                <TextView
-                    android:id="@+id/tvHeaderTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="Juntos mejoramos Cajamarca"
-                    android:textColor="@color/white"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView android:id="@+id/tvHeaderTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_margin="16dp" android:text="Juntos mejoramos Cajamarca" android:textColor="@color/white" android:textSize="22sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- 2. Título de Sección -->
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Ingresar a tu cuenta"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardHeader" />
 
-        <!-- 3. Subtítulo Informativo -->
-        <TextView
-            android:id="@+id/tvSubtitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Accede para seguir tus reportes y apoyar propuestas de vecinos."
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+        <TextView android:id="@+id/tvTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Ingresar a tu cuenta" android:textColor="@color/colorTextPrimary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/cardHeader" />
 
-        <!-- 4. Input Correo o DNI -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmailOrDni"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            app:boxBackgroundColor="@color/colorSurfaceVariant"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmailOrDni"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Correo electrónico o DNI"
-                android:inputType="textEmailAddress"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="15sp" />
+        <TextView android:id="@+id/tvSubtitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Accede para seguir tus reportes y apoyar propuestas de vecinos." android:textColor="@color/colorTextSecondary" android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilEmailOrDni" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="20dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
+
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etEmailOrDni" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Correo electrónico o DNI" android:inputType="textEmailAddress" android:textColor="@color/colorTextPrimary" android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- 5. Input Contraseña -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilPassword"
-            style="@style/Widget.Material3.TextInputLayout.FilledBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:boxBackgroundColor="@color/colorSurfaceVariant"
-            app:boxCornerRadiusBottomEnd="12dp"
-            app:boxCornerRadiusBottomStart="12dp"
-            app:boxCornerRadiusTopEnd="12dp"
-            app:boxCornerRadiusTopStart="12dp"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:endIconMode="password_toggle"
-            app:passwordToggleEnabled="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilEmailOrDni">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                android:textColor="@color/colorTextPrimary"
-                android:textSize="15sp" />
+        <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilPassword" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp" app:endIconMode="password_toggle" app:passwordToggleEnabled="true" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tilEmailOrDni">
+
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Contraseña" android:inputType="textPassword" android:textColor="@color/colorTextPrimary" android:textSize="15sp" android:maxLength="128" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- 6. Enlace Olvidaste tu contraseña -->
-        <TextView
-            android:id="@+id/tvForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:padding="4dp"
-            android:text="¿Olvidaste tu contraseña?"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tilPassword" />
 
-        <!-- 7. Botón Principal: Iniciar Sesión -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogin"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
-            android:text="Iniciar Sesión"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:cornerRadius="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvForgotPassword" />
+        <TextView android:id="@+id/tvForgotPassword" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:padding="4dp" android:text="¿Olvidaste tu contraseña?" android:textColor="@color/colorPrimary" android:textSize="14sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/tilPassword" />
 
-        <!-- 8. Divisor Texto -->
-        <TextView
-            android:id="@+id/tvDividerText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="o ingresa con"
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
-        <!-- 9a. Botón Secundario 1: DNI Electrónico / Clave Perú -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDniKey"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="16dp"
-            android:text="DNI Electrónico / Clave Perú"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="14sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="@color/colorTextSecondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDividerText" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogin" android:layout_width="0dp" android:layout_height="54dp" android:layout_marginTop="16dp" android:text="Iniciar Sesión" android:textSize="16sp" android:textStyle="bold" app:cornerRadius="12dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvForgotPassword" />
 
-        <!-- 9b. Botón Secundario 2: Continuar con Google -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGoogle"
-            style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="10dp"
-            android:text="Continuar con Google"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="14sp"
-            app:cornerRadius="12dp"
-            app:strokeColor="@color/colorTextSecondary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnDniKey" />
 
-        <!-- 10. Contenedor Inferior: Registro -->
-        <LinearLayout
-            android:id="@+id/llRegisterContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="12dp"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnGoogle"
-            app:layout_constraintVertical_bias="1.0">
+        <TextView android:id="@+id/tvDividerText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="o ingresa con" android:textColor="@color/colorTextSecondary" android:textSize="13sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnLogin" />
 
-            <TextView
-                android:id="@+id/tvNoAccountPrompt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="¿No tienes una cuenta aún? "
-                android:textColor="@color/colorTextSecondary"
-                android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tvRegisterAction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Regístrate como vecino de Cajamarca"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnDniKey" style="?attr/materialButtonOutlinedStyle" android:layout_width="0dp" android:layout_height="52dp" android:layout_marginTop="16dp" android:text="DNI Electrónico / Clave Perú" android:textColor="@color/colorTextPrimary" android:textSize="14sp" app:cornerRadius="12dp" app:strokeColor="@color/colorTextSecondary" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvDividerText" />
+
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnGoogle" style="?attr/materialButtonOutlinedStyle" android:layout_width="0dp" android:layout_height="52dp" android:layout_marginTop="10dp" android:text="Continuar con Google" android:textColor="@color/colorTextPrimary" android:textSize="14sp" app:cornerRadius="12dp" app:strokeColor="@color/colorTextSecondary" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnDniKey" />
+
+
+        <LinearLayout android:id="@+id/llRegisterContainer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginBottom="12dp" android:orientation="horizontal" android:padding="4dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnGoogle" app:layout_constraintVertical_bias="1.0">
+
+            <TextView android:id="@+id/tvNoAccountPrompt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¿No tienes una cuenta aún? " android:textColor="@color/colorTextSecondary" android:textSize="14sp" />
+
+            <TextView android:id="@+id/tvRegisterAction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Regístrate como vecino de Cajamarca" android:textColor="@color/colorPrimary" android:textSize="14sp" android:textStyle="bold" />
 
         </LinearLayout>
 
