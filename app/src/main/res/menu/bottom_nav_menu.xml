@@ -1,17 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/nav_reports"
-        android:icon="@android:drawable/ic_menu_report_image"
-        android:title="Reportes" />
-
-    <item
-        android:id="@+id/nav_activity"
-        android:icon="@android:drawable/ic_menu_recent_history"
-        android:title="Actividad" />
-
-    <item
-        android:id="@+id/nav_profile"
-        android:icon="@android:drawable/ic_menu_myplaces"
-        android:title="Perfil" />
+    <item android:id="@+id/nav_reports" android:icon="@drawable/ic_figma_reports" android:title="Reportes"/>
+    <item android:id="@+id/nav_new" android:icon="@drawable/ic_figma_plus" android:title=""/>
+    <item android:id="@+id/nav_activity" android:icon="@drawable/ic_figma_activity" android:title="Actividad"/>
+    <item android:id="@+id/nav_profile" android:icon="@drawable/ic_figma_profile" android:title="Perfil"/>
 </menu>

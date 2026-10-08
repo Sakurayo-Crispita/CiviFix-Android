@@ -1,0 +1,3 @@
+# Recursos originales: conservar los bytes y usar parches binarios.
+app/src/main/res/raw/*.svg -text -diff
+app/src/main/res/raw/jakarta_ofl.txt -text -diff

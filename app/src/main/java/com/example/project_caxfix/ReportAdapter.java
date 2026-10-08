@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.Holder> {
-    public interface Listener { void onOpen(Report report); void onSupport(Report report); }
+    public interface Listener { void onOpen(Report report); void onSupport(Report report); void onNewReport(); }
     private List<Report> reports = new ArrayList<>();
     private final Listener listener;
     public ReportAdapter(Listener listener) { this.listener = listener; }
@@ -29,6 +29,23 @@ public final class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.Hold
         b.tvSupportCount.setContentDescription(r.supported ? "Retirar mi apoyo" : "Apoyar reporte");
         b.tvSupportCount.setOnClickListener(v -> listener.onSupport(r));
         b.tvCommentCount.setOnClickListener(v -> listener.onOpen(r)); b.getRoot().setOnClickListener(v -> listener.onOpen(r));
+        b.btnSupport.setText(r.supported ? "Apoyado ✓" : "Apoyar");
+        b.btnSupport.setOnClickListener(v -> listener.onSupport(r));
+        b.btnComment.setOnClickListener(v -> listener.onOpen(r));
+        b.btnNewReport.setOnClickListener(v -> listener.onNewReport());
+        b.btnShare.setOnClickListener(v -> {
+            android.content.Intent share = new android.content.Intent(android.content.Intent.ACTION_SEND);
+            share.setType("text/plain"); share.putExtra(android.content.Intent.EXTRA_TEXT, "CiviFix · " + r.title + "\n" + r.description + "\nBarrio: " + r.neighborhood + "\nEstado: " + r.status);
+            v.getContext().startActivity(android.content.Intent.createChooser(share, "Compartir reporte"));
+        });
+        boolean resolved = "Resuelto".equals(r.status), attention = "En Atención".equals(r.status);
+        b.reportProgress.setProgress(resolved ? 100 : attention ? 50 : 25);
+        b.tvStatusBadge.setText(resolved ? "Solucionado" : r.status);
+        android.graphics.drawable.GradientDrawable badge = new android.graphics.drawable.GradientDrawable();
+        badge.setCornerRadius(100 * b.getRoot().getResources().getDisplayMetrics().density);
+        badge.setColor(android.graphics.Color.parseColor(resolved ? "#AEF0D7" : "#FFDBC3"));
+        b.tvStatusBadge.setBackground(badge);
+        b.tvStatusBadge.setTextColor(android.graphics.Color.parseColor(resolved ? "#004635" : "#904D00"));
         ImageLoader.load(b.ivReportImage, r.imageUri);
     }
     @Override public int getItemCount() { return reports.size(); }

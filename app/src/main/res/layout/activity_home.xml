@@ -1,186 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorSurfaceVariant"
-    tools:context=".HomeActivity">
-
-    <!-- 1. Menú Superior (LinearLayout horizontal) -->
-    <LinearLayout
-        android:id="@+id/llTopBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:padding="16dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/ivLocationIcon"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:contentDescription="Ubicación"
-            android:src="@android:drawable/ic_menu_mylocation"
-            app:tint="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/tvLocationName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp"
-            android:text="Cajamarca Centro"
-            android:textColor="@color/colorTextPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivUserProfile"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:contentDescription="Perfil de usuario"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
-            tools:src="@tools:sample/avatars" />
-
+<?xml version='1.0' encoding='utf-8'?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/colorBackground">
+    <LinearLayout android:id="@+id/llTopBar" android:layout_width="0dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:layout_height="64dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingHorizontal="16dp">
+        <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CiviFix Cajamarca" android:textSize="14sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:gravity="end" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cajamarca Centro" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvLocationName" android:gravity="end" android:layout_marginTop="3dp" />
+        </LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/ivUserProfile" android:layout_marginStart="16dp" android:background="@drawable/bg_mint_circle" android:padding="8dp" android:src="@drawable/ic_figma_user" android:contentDescription="Abrir mi perfil" app:shapeAppearanceOverlay="@style/CiviFix.Circle" />
     </LinearLayout>
-
-    <!-- 2. HorizontalScrollView con ChipGroup completo de Filtros -->
-    <HorizontalScrollView
-        android:id="@+id/hsvChips"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:clipToPadding="false"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llTopBar">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroupFilters"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:singleLine="true"
-            app:singleSelection="true"
-            app:selectionRequired="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipAll"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Todos" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipPotholes"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Baches y Pistas" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipLighting"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Alumbrado Público" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipWaste"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Limpieza y Residuos" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipSecurity"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Seguridad Ciudadana" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipWater"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Agua y Saneamiento" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipParks"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Parques y Jardines" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipTraffic"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ordenamiento de Tránsito" />
-
+    <LinearLayout android:layout_width="0dp" android:layout_height="56dp" android:orientation="horizontal" android:gravity="center_vertical" android:id="@+id/llZone" android:padding="8dp" android:background="@drawable/bg_soft" android:layout_marginHorizontal="16dp" android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/llTopBar">
+        <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/ic_figma_brand" android:contentDescription="@null" android:background="@drawable/bg_mint_circle" android:padding="8dp" />
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1" android:layout_marginStart="8dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Zona de observación" android:textSize="10sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Barrio San Sebastián" android:textSize="14sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:id="@+id/tvNeighborhood" android:fontFamily="@font/jakarta_semibold" />
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="● Local" android:textSize="10sp" android:textColor="@color/colorOrange" android:includeFontPadding="false" android:background="@drawable/bg_soft" android:padding="6dp" />
+    </LinearLayout>
+    <HorizontalScrollView android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/hsvChips" android:scrollbars="none" android:paddingHorizontal="16dp" android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/llZone">
+        <com.google.android.material.chip.ChipGroup android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipGroupFilters" app:singleLine="true" app:singleSelection="true" app:selectionRequired="true">
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipAll" style="@style/CiviFix.Chip" android:text="Todos" android:checkable="true" android:checked="true" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipPotholes" style="@style/CiviFix.Chip" android:text="Baches y Pistas" android:checkable="true" android:checked="false" app:chipIcon="@drawable/ic_figma_potholes" app:chipIconVisible="true" app:chipIconSize="14dp" app:chipIconTint="@color/chip_text" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipLighting" style="@style/CiviFix.Chip" android:text="Alumbrado Público" android:checkable="true" android:checked="false" app:chipIcon="@drawable/ic_figma_lighting" app:chipIconVisible="true" app:chipIconSize="14dp" app:chipIconTint="@color/chip_text" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipWaste" style="@style/CiviFix.Chip" android:text="Limpieza y Residuos" android:checkable="true" android:checked="false" app:chipIcon="@drawable/ic_figma_waste" app:chipIconVisible="true" app:chipIconSize="14dp" app:chipIconTint="@color/chip_text" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipWater" style="@style/CiviFix.Chip" android:text="Agua y Saneamiento" android:checkable="true" android:checked="false" app:chipIcon="@drawable/ic_figma_water" app:chipIconVisible="true" app:chipIconSize="14dp" app:chipIconTint="@color/chip_text" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipParks" style="@style/CiviFix.Chip" android:text="Parques y Jardines" android:checkable="true" android:checked="false" app:chipIcon="@drawable/ic_figma_parks" app:chipIconVisible="true" app:chipIconSize="14dp" app:chipIconTint="@color/chip_text" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipSecurity" style="@style/CiviFix.Chip" android:text="Seguridad Ciudadana" android:checkable="true" android:checked="false" />
+            <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/chipTraffic" style="@style/CiviFix.Chip" android:text="Ordenamiento de Tránsito" android:checkable="true" android:checked="false" />
         </com.google.android.material.chip.ChipGroup>
-
     </HorizontalScrollView>
-
-    <!-- 3. RecyclerView para el Feed de Reportes -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFeed"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:clipToPadding="false"
-        android:paddingHorizontal="16dp"
-        android:paddingBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hsvChips"
-        tools:listitem="@layout/item_report" />
-
-    <!-- 4. BottomNavigationView inferior con elevation de 8dp -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:elevation="8dp"
-        app:menu="@menu/bottom_nav_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- 5. FloatingActionButton destacado flote 100% visible sobre la barra inferior (elevation 16dp) -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabNewReport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Nuevo Reporte"
-        android:src="@android:drawable/ic_input_add"
-        android:elevation="16dp"
-        android:translationZ="16dp"
-        app:backgroundTint="@color/colorPrimary"
-        app:tint="@color/white"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
-        app:layout_constraintTop_toTopOf="@id/bottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView android:id="@+id/tvEmpty" android:layout_width="0dp" android:layout_height="wrap_content"
-        android:text="No hay reportes" android:textSize="16sp" android:gravity="center" android:padding="24dp"
-        android:visibility="gone" app:layout_constraintTop_toBottomOf="@id/hsvChips"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation" app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="0dp" android:layout_height="0dp" android:id="@+id/rvFeed" android:paddingHorizontal="16dp" android:paddingBottom="16dp" android:clipToPadding="false" android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@id/hsvChips" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@id/bottomNavigation" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_width="0dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:layout_height="wrap_content" android:id="@+id/bottomNavigation" style="@style/CiviFix.Navigation" app:menu="@menu/bottom_nav_menu" />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton app:layout_constraintBottom_toBottomOf="@id/bottomNavigation" app:layout_constraintTop_toTopOf="@id/bottomNavigation" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.375" android:layout_width="56dp" android:layout_height="56dp" android:id="@+id/fabNewReport" android:src="@drawable/ic_figma_plus" android:contentDescription="Crear nuevo reporte" app:backgroundTint="@color/colorPrimary" app:tint="@null" app:shapeAppearanceOverlay="@style/CiviFix.Circle" app:maxImageSize="20dp" />
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="No hay reportes" android:textSize="16sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvEmpty" android:gravity="center" android:visibility="gone" android:padding="24dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/hsvChips" />
 </androidx.constraintlayout.widget.ConstraintLayout>

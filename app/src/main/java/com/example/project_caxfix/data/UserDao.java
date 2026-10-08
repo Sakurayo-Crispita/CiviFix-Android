@@ -39,7 +39,7 @@ public final class UserDao {
             ContentValues user = new ContentValues(); user.put("name", name); user.put("neighborhood", neighborhood);
             if (db.update("users", user, "id = ?", new String[]{String.valueOf(id)}) != 1) return false;
             ContentValues reports = new ContentValues(); reports.put("author_name", name); reports.put("neighborhood", neighborhood);
-            db.update("reports", reports, "author_user_id = ?", new String[]{String.valueOf(id)});
+            db.update("reports", reports, "author_user_id = ? AND author_anonymous = 0", new String[]{String.valueOf(id)});
             db.setTransactionSuccessful(); return true;
         } finally { db.endTransaction(); }
     }

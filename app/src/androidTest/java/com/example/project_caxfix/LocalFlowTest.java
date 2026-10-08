@@ -17,7 +17,7 @@ public class LocalFlowTest {
         UserDao users = new UserDao(context); ReportDao reports = new ReportDao(context);
         String suffix = java.util.UUID.randomUUID().toString();
         String dni = String.format(java.util.Locale.ROOT, "%08d", new java.security.SecureRandom().nextInt(100000000));
-        long userId = -1, secondId = -1, reportId = -1;
+        long userId = -1, secondId = -1, reportId = -1, anonymousId = -1;
         try {
             userId = users.register("Vecino Prueba", suffix + "@example.com", dni, "Centro", "Prueba123!");
             assertTrue(userId > 0);
@@ -35,8 +35,12 @@ public class LocalFlowTest {
             reports.addComment(reportId, userId, "  Se necesita atención.  ");
             assertEquals(1, reports.get(reportId, userId).commentCount);
             assertEquals("Se necesita atención.", reports.comments(reportId).get(0).body);
+            anonymousId = reports.insert(user, "Reporte anónimo", "Baches y Pistas", "Evidencia del problema en la vía", null, true);
+            assertEquals("Vecino anónimo", reports.get(anonymousId, userId).authorName);
             assertTrue(users.update(userId, "Nombre actualizado", "Belén"));
             assertEquals("Nombre actualizado", reports.get(reportId, userId).authorName);
+            assertEquals("Vecino anónimo", reports.get(anonymousId, userId).authorName);
+            assertTrue(reports.deleteOwned(anonymousId, userId));
             String secondDni = String.format(java.util.Locale.ROOT, "%08d", (Long.parseLong(dni) + 1) % 100000000);
             secondId = users.register("Otro Vecino", suffix + "2@example.com", secondDni, "Centro", "Prueba123!");
             assertTrue(secondId > 0); assertFalse(reports.deleteOwned(reportId, secondId));
@@ -45,6 +49,7 @@ public class LocalFlowTest {
         } finally {
             SQLiteDatabase db = CiviFixDatabaseHelper.get(context).getWritableDatabase();
             if (reportId > 0 && userId > 0) reports.deleteOwned(reportId, userId);
+            if (anonymousId > 0 && userId > 0) reports.deleteOwned(anonymousId, userId);
             if (userId > 0) db.delete("users", "id = ?", new String[]{String.valueOf(userId)});
             if (secondId > 0) db.delete("users", "id = ?", new String[]{String.valueOf(secondId)});
         }

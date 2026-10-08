@@ -1,40 +1,89 @@
 <?xml version='1.0' encoding='utf-8'?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp" android:background="@color/white">
-
-
-    <View android:layout_width="40dp" android:layout_height="4dp" android:layout_gravity="center_horizontal" android:layout_marginBottom="16dp" android:background="@color/colorSurfaceVariant" />
-
-
-    <TextView android:id="@+id/tvModalTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Crear Nuevo Reporte" android:textColor="@color/colorTextPrimary" android:textSize="20sp" android:textStyle="bold" />
-
-
-    <TextView android:id="@+id/tvModalSubtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginBottom="20dp" android:text="Reporta un problema en tu barrio para alertar a la comunidad y autoridades." android:textColor="@color/colorTextSecondary" android:textSize="14sp" />
-
-
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilReportTitle" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp">
-
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etReportTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Título de la incidencia" android:inputType="textCapSentences" android:textColor="@color/colorTextPrimary" android:maxLength="120" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilCategory" style="@style/Widget.Material3.TextInputLayout.FilledBox.ExposedDropdownMenu" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp">
-
-        <AutoCompleteTextView android:id="@+id/actCategory" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Categoría cívica" android:inputType="none" android:textColor="@color/colorTextPrimary" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilDescription" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp">
-
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDescription" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="top" android:hint="Descripción detallada del problema" android:inputType="textMultiLine" android:minLines="3" android:textColor="@color/colorTextPrimary" android:maxLength="2000" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.button.MaterialButton android:id="@+id/btnAttachPhoto" style="?attr/materialButtonOutlinedStyle" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="20dp" android:text="Adjuntar Foto del Incidente" android:textColor="@color/colorTextPrimary" app:cornerRadius="12dp" app:icon="@android:drawable/ic_menu_camera" app:iconGravity="textStart" app:iconPadding="8dp" app:iconTint="@color/colorPrimary" app:strokeColor="@color/colorTextSecondary" />
-
-
-    <com.google.android.material.button.MaterialButton android:id="@+id/btnSubmitReport" android:layout_width="match_parent" android:layout_height="56dp" android:text="Publicar Reporte" android:textSize="16sp" android:textStyle="bold" app:cornerRadius="12dp" />
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="@color/colorBackground">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:orientation="horizontal" android:gravity="center_vertical" android:paddingHorizontal="16dp">
+        <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CiviFix Cajamarca" android:textSize="14sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:gravity="end" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cajamarca Centro" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvLocationName" android:gravity="end" android:layout_marginTop="3dp" />
+        </LinearLayout>
+        <com.google.android.material.imageview.ShapeableImageView android:layout_width="32dp" android:layout_height="32dp" android:id="@+id/ivUserProfile" android:layout_marginStart="16dp" android:background="@drawable/bg_mint_circle" android:padding="8dp" android:src="@drawable/ic_figma_user" android:contentDescription="Abrir mi perfil" app:shapeAppearanceOverlay="@style/CiviFix.Circle" />
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="0dp" android:fillViewport="true" android:background="@color/colorBackground" android:layout_weight="1">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp" android:paddingBottom="32dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="PARTICIPACIÓN CIUDADANA" android:textSize="11sp" android:textColor="@color/colorOrange" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginTop="8dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Reportar una incidencia" android:textSize="24sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:id="@+id/tvModalTitle" android:fontFamily="@font/jakarta_bold" android:layout_marginTop="8dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ayúdanos a identificar el problema para coordinar su pronta solución con la junta vecinal y el municipio." android:textSize="14sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvModalSubtitle" android:layout_marginTop="4dp" android:layout_marginBottom="24dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_figma_photo" android:contentDescription="@null" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="1. Evidencia fotográfica" android:textSize="16sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginStart="4dp" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Una imagen clara ayuda a priorizar el problema reportado." android:textSize="12sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:layout_marginTop="8dp" />
+            <com.google.android.material.imageview.ShapeableImageView android:layout_width="match_parent" android:layout_height="176dp" android:id="@+id/imgPhotoPreview" android:visibility="gone" android:scaleType="centerCrop" android:layout_marginTop="8dp" android:contentDescription="Vista previa de la foto elegida" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Small" />
+            <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnAttachPhoto" style="@style/CiviFix.Button.Secondary" android:text="Adjuntar foto" app:icon="@drawable/ic_figma_photo" app:iconTint="@null" app:iconSize="16dp" android:layout_marginTop="8dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sin foto seleccionada" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvPhotoName" android:layout_marginTop="4dp" />
+            <Space android:layout_width="match_parent" android:layout_height="24dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_figma_potholes" android:contentDescription="@null" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="2. Categoría del problema" android:textSize="16sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginStart="4dp" />
+            </LinearLayout>
+            <com.google.android.material.chip.ChipGroup android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/categoryChips" app:singleSelection="true" app:selectionRequired="true" android:layout_marginTop="8dp">
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/categoryPotholes" style="@style/CiviFix.Chip" android:text="Baches y Pistas" android:checkable="true" app:chipIcon="@drawable/ic_figma_potholes" app:chipIconVisible="true" app:chipIconSize="15dp" android:checked="true" app:chipIconTint="@color/chip_text" />
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/categoryLighting" style="@style/CiviFix.Chip" android:text="Alumbrado Público" android:checkable="true" app:chipIcon="@drawable/ic_figma_lighting" app:chipIconVisible="true" app:chipIconSize="15dp" android:checked="false" app:chipIconTint="@color/chip_text" />
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/categoryWaste" style="@style/CiviFix.Chip" android:text="Limpieza y Residuos" android:checkable="true" app:chipIcon="@drawable/ic_figma_waste" app:chipIconVisible="true" app:chipIconSize="15dp" android:checked="false" app:chipIconTint="@color/chip_text" />
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/categoryParks" style="@style/CiviFix.Chip" android:text="Parques y Jardines" android:checkable="true" app:chipIcon="@drawable/ic_figma_parks" app:chipIconVisible="true" app:chipIconSize="15dp" android:checked="false" app:chipIconTint="@color/chip_text" />
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/categoryWater" style="@style/CiviFix.Chip" android:text="Agua y Saneamiento" android:checkable="true" app:chipIcon="@drawable/ic_figma_water" app:chipIconVisible="true" app:chipIconSize="15dp" android:checked="false" app:chipIconTint="@color/chip_text" />
+                <com.google.android.material.chip.Chip android:id="@+id/categorySecurity" style="@style/CiviFix.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Seguridad Ciudadana" android:checkable="true" />
+                <com.google.android.material.chip.Chip android:id="@+id/categoryTraffic" style="@style/CiviFix.Chip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ordenamiento de Tránsito" android:checkable="true" />
+            </com.google.android.material.chip.ChipGroup>
+            <AutoCompleteTextView android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/actCategory" android:visibility="gone" android:text="Baches y Pistas" />
+            <Space android:layout_width="match_parent" android:layout_height="24dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_figma_location" android:contentDescription="@null" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="3. Ubicación en Cajamarca" android:textSize="16sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginStart="4dp" />
+            </LinearLayout>
+            <Space android:layout_width="match_parent" android:layout_height="8dp" />
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/CiviFix.Input">
+                <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="48dp" android:id="@+id/etLocation" android:paddingHorizontal="12dp" android:paddingVertical="10dp" android:textSize="14sp" android:inputType="textPostalAddress" android:hint="Jr. o avenida, barrio y referencia" android:gravity="center_vertical" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.imageview.ShapeableImageView android:layout_width="match_parent" android:layout_height="160dp" android:id="@+id/imgMapReference" android:src="@drawable/img_mapa_cajamarca" android:scaleType="centerCrop" android:layout_marginTop="8dp" android:contentDescription="Mapa de referencia de Cajamarca del diseño; sin GPS" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Small" />
+            <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnAdjustMap" style="@style/CiviFix.Button.Secondary" android:text="Abrir mapa de referencia" android:layout_marginTop="8dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Mapa de referencia · © OpenStreetMap contributors. Escribe la dirección; no captura GPS." android:textSize="10sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:layout_marginTop="4dp" />
+            <Space android:layout_width="match_parent" android:layout_height="24dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_figma_details" android:contentDescription="@null" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="4. Detalle de la incidencia" android:textSize="16sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginStart="4dp" />
+            </LinearLayout>
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Título breve · Máx. 60 caracteres" android:textSize="12sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginBottom="6dp" />
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/CiviFix.Input" android:id="@+id/tilReportTitle">
+                <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="48dp" android:id="@+id/etReportTitle" android:paddingHorizontal="12dp" android:paddingVertical="10dp" android:textSize="14sp" android:inputType="textCapSentences" android:hint="Ej. Bache con agua en Jr. Dos de Mayo" android:gravity="center_vertical" android:maxLength="60" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Descripción detallada · Mínimo 20 caracteres" android:textSize="12sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginBottom="6dp" />
+            <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/CiviFix.Input" android:id="@+id/tilDescription">
+                <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="120dp" android:id="@+id/etDescription" android:paddingHorizontal="12dp" android:paddingVertical="10dp" android:textSize="14sp" android:inputType="textMultiLine" android:hint="Describe qué ocurre y desde cuándo" android:gravity="top" android:maxLength="2000" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <Space android:layout_width="match_parent" android:layout_height="16dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/bg_soft" android:padding="12dp">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_figma_anonymous" android:contentDescription="@null" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1" android:layout_marginStart="8dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Reportar de forma anónima" android:textSize="14sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Oculta tu nombre en el reporte público." android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" />
+                </LinearLayout>
+                <com.google.android.material.materialswitch.MaterialSwitch android:layout_width="wrap_content" android:layout_height="48dp" android:id="@+id/switchAnonymous" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Compromiso Cajamarquino: reporta con respeto y aporta información verificable." android:textSize="11sp" android:textColor="@color/colorOrange" android:includeFontPadding="false" android:background="@drawable/bg_orange" android:padding="12dp" android:layout_marginTop="16dp" />
+            <Space android:layout_width="match_parent" android:layout_height="24dp" />
+            <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnSubmitReport" style="@style/CiviFix.Button" android:text="Enviar Reporte a la Comunidad" app:icon="@drawable/ic_figma_login" app:iconTint="@null" app:iconSize="16dp" />
+            <Space android:layout_width="match_parent" android:layout_height="8dp" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <com.google.android.material.button.MaterialButton android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/btnSaveDraft" style="@style/CiviFix.Button.Secondary" android:text="Guardar borrador" android:layout_weight="1" android:textSize="12sp" />
+                <com.google.android.material.button.MaterialButton android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/btnDiscard" style="@style/CiviFix.Button.Secondary" android:text="Descartar" android:layout_weight="1" android:layout_marginStart="8dp" android:textColor="#C62828" android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="72dp" android:background="@color/white">
+        <com.google.android.material.bottomnavigation.BottomNavigationView android:layout_width="0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent" android:layout_height="wrap_content" android:id="@+id/bottomNavigation" style="@style/CiviFix.Navigation" app:menu="@menu/bottom_nav_menu" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_width="56dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.375" android:layout_height="56dp" android:id="@+id/fabNewReport" android:src="@drawable/ic_figma_plus" android:contentDescription="Crear nuevo reporte" app:backgroundTint="@color/colorPrimary" app:tint="@null" app:shapeAppearanceOverlay="@style/CiviFix.Circle" app:maxImageSize="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

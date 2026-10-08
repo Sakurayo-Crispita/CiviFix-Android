@@ -15,12 +15,15 @@ Aplicación Android para reportar incidencias de Cajamarca. Esta versión amplí
 1. Registro con nombre, correo, DNI, barrio y contraseña. El DNI es un identificador local y no se verifica contra RENIEC.
 2. Inicio de sesión por correo o DNI; contraseñas con PBKDF2 y sal aleatoria; sesión persistente y cierre de sesión.
 3. Listado de reportes y filtros por categoría.
-4. Creación de reportes con foto opcional, título, categoría y descripción. El autor corresponde al usuario conectado.
+4. Creación de reportes con foto opcional, título, categoría, descripción y dirección. Permite ocultar el nombre en el listado público.
 5. Fotografías copiadas al almacenamiento privado de la aplicación, con un límite de 16 MB.
 6. Detalle del reporte, apoyo reversible y comentarios guardados.
-7. Mi actividad: reportes propios. Perfil: editar nombre/barrio y resumen en Compose.
+7. Mi actividad: reportes propios. Perfil: editar nombre/barrio, teléfono local, foto y resumen en Compose.
 8. Eliminación de reportes propios, con confirmación; sus comentarios y apoyos se eliminan también.
 9. Migración de la base de datos anterior sin borrar sus reportes.
+10. Vista previa de fotos, borrador por cuenta, descarte y apertura de una aplicación de mapas con la dirección escrita.
+11. Acciones de apoyar, comentar y compartir en las tarjetas; barra de navegación con acceso al formulario.
+12. Preferencias de alertas guardadas localmente, sin servicio de envío conectado.
 
 Los tres reportes que aparecen en una instalación nueva son ejemplos. Los reportes anteriores sin una cuenta asociada se conservan en el listado general; no se atribuyen automáticamente a la primera cuenta registrada.
 
@@ -64,9 +67,17 @@ Para ejecutar el flujo de integración de SQLite y cuentas, conecta un emulador 
 
 ## Alcance pendiente
 
-La app es un prototipo local. No incluye un servidor municipal, sincronización entre celulares, mapa/GPS, notificaciones remotas, acceso con Google, DNI electrónico ni recuperación de contraseña por correo. Los estados municipales del ejemplo se muestran, pero no hay un panel administrativo que los cambie. Los botones de integraciones externas del login están ocultos para presentar solo acciones disponibles.
+La app es un prototipo local. No incluye un servidor municipal, sincronización entre celulares, captura GPS, notificaciones remotas, acceso con Google, DNI electrónico ni recuperación de contraseña por correo. El mapa incluido es una imagen de referencia, y el botón abre una aplicación de mapas instalada. Los estados municipales del ejemplo se muestran, pero no hay un panel administrativo que los cambie. Google, DNIe y recuperación se muestran como en el diseño y explican que su integración está pendiente al pulsarlos.
 
-La interfaz parte de los XML recibidos. El diseño todavía no se contrastó con Figma porque no se proporcionó su enlace.
+## Diseño y recursos
+
+La versión 3 adapta las cuatro pantallas del [Figma del proyecto](https://www.figma.com/design/1NbgFTkymvqYjiq3n48WPe/) a Java/XML y conserva el resumen Compose. Usa verde `#004635`, fondo `#F9F9FF`, superficies `#F0F3FF`, tarjetas blancas de 12 dp y Plus Jakarta Sans. Los contadores y la identidad se calculan con los datos del dispositivo; no se copian las cifras ficticias del diseño.
+
+Las fotos alternativas están en `app/src/main/res/drawable-nodpi`. Los 32 iconos están en `res/drawable-xxhdpi`, exportados a escala 3 para conservar su tamaño lógico en dp. Las vistas controlan su tamaño. Los SVG originales están en `res/raw`. No necesitas descargar nada cuando ejecutas la app. Las fotos aportadas por el usuario se guardan por separado en el almacenamiento privado.
+
+Las fotos originales del Figma no se pudieron descargar completas antes de alcanzar el límite de consultas. Se usaron fotos de Wikimedia Commons autorizadas como alternativa por el alumno. Sus autores, fuentes, licencias y cambios están en `res/raw/creditos_imagenes.txt`; el inicio de sesión permite consultar esos créditos. El mapa de referencia incluye atribución a OpenStreetMap. El recorte de las fotos y los datos de usuario pueden diferir del Figma.
+
+Las 22 clases Java existentes se conservan: pantallas, modelos de datos, acceso SQLite y utilidades. Una clase separada permite localizar y explicar cada responsabilidad. Esta actualización no añade más clases Java.
 
 ## Documentación oficial
 

@@ -10,10 +10,24 @@ public final class MainActivity extends BaseActivity {
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
         binding = ActivityMainBinding.inflate(getLayoutInflater()); setContentView(binding.getRoot()); applyInsets(binding.getRoot());
-        binding.tvSubtitle.setText("Ingresa con una cuenta creada en este dispositivo.");
-        // Estas integraciones externas no forman parte de la versión local.
-        binding.tvForgotPassword.setVisibility(View.GONE);
-        binding.btnDniKey.setVisibility(View.GONE); binding.btnGoogle.setVisibility(View.GONE); binding.tvDividerText.setVisibility(View.GONE);
+        // Conserva los controles del diseño; las integraciones pendientes se explican al pulsar.
+        binding.tvForgotPassword.setOnClickListener(v -> pending("Recuperación de contraseña", "Esta versión guarda cuentas en el dispositivo. Para recuperar contraseñas por correo hace falta conectar un servicio de autenticación."));
+        binding.btnDniKey.setOnClickListener(v -> pending("DNI Electrónico / Clave Perú", "La integración de identidad digital aún no está conectada. Puedes ingresar con el DNI y la contraseña que registraste en esta app."));
+        binding.btnGoogle.setOnClickListener(v -> pending("Continuar con Google", "El acceso con Google requiere configurar un proveedor de autenticación y sus credenciales. Por ahora usa una cuenta creada en esta app."));
+        binding.tvCredits.setOnClickListener(v -> {
+            try (java.io.InputStream input = getResources().openRawResource(R.raw.creditos_imagenes)) {
+                java.io.ByteArrayOutputStream buffer = new java.io.ByteArrayOutputStream();
+                byte[] bytes = new byte[4096]; int count;
+                while ((count = input.read(bytes)) > 0) buffer.write(bytes, 0, count);
+                pending("Créditos de imágenes", buffer.toString("UTF-8"));
+            } catch (java.io.IOException error) { toast("No se pudieron abrir los créditos"); }
+        });
+        work(() -> new com.example.project_caxfix.data.ReportDao(this).getAll(0, false), reports -> {
+            int resolved = 0; java.util.Set<String> neighborhoods = new java.util.HashSet<>();
+            for (Report r : reports) { if ("Resuelto".equals(r.status)) resolved++; neighborhoods.add(r.neighborhood); }
+            binding.tvWelcomeResolved.setText(String.valueOf(resolved));
+            binding.tvWelcomeNeighborhoods.setText(String.valueOf(neighborhoods.size()));
+        });
         binding.llRegisterContainer.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
         binding.btnLogin.setOnClickListener(v -> login());
         if (session.userId() > 0) {
@@ -21,6 +35,10 @@ public final class MainActivity extends BaseActivity {
                 if (user != null) openHome(); else session.logout();
             });
         }
+    }
+    private void pending(String title, String message) {
+        new com.google.android.material.dialog.MaterialAlertDialogBuilder(this)
+            .setTitle(title).setMessage(message).setPositiveButton("Entendido", null).show();
     }
     private void login() {
         String identifier = binding.etEmailOrDni.getText().toString().trim();

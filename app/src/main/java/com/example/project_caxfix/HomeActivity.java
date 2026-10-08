@@ -28,6 +28,7 @@ public class HomeActivity extends BaseActivity {
                 work(() -> { new ReportDao(HomeActivity.this).toggleSupport(report.id, session.userId()); return true; },
                     done -> { toggling = false; load(); }, error -> { toggling = false; toast(error); });
             }
+            @Override public void onNewReport() { Navigation.showNewReport(HomeActivity.this); }
         });
         binding.rvFeed.setLayoutManager(new LinearLayoutManager(this)); binding.rvFeed.setAdapter(adapter);
         binding.chipGroupFilters.setOnCheckedStateChangeListener((group, ids) -> filter());
@@ -47,7 +48,7 @@ public class HomeActivity extends BaseActivity {
     private void load() {
         work(() -> new UserDao(this).get(session.userId()), user -> {
             if (user == null) { session.logout(); requireSession(); return; }
-            binding.tvLocationName.setText(ownOnly() ? "Mi actividad" : user.neighborhood);
+            binding.tvNeighborhood.setText(ownOnly() ? "Mi actividad" : user.neighborhood);
         });
         work(() -> new ReportDao(this).getAll(session.userId(), ownOnly()), result -> { reports = result; filter(); });
     }

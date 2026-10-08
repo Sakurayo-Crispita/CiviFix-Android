@@ -1,0 +1,22 @@
+Fotos ilustrativas de internet. Los reportes incluidos son datos de demostración; estas fotos no documentan incidencias reales de Cajamarca.
+
+Plaza de Armas de Cajamarca amb la catedral al fons02.jpg — Pitxiquin, CC BY-SA 4.0.
+https://commons.wikimedia.org/wiki/File:Plaza_de_Armas_de_Cajamarca_amb_la_catedral_al_fons02.jpg
+
+Iglesia Belen en Cajamarca, foto nocturna.jpg — Rickel2016, CC BY-SA 4.0.
+https://commons.wikimedia.org/wiki/File:Iglesia_Belen_en_Cajamarca,_foto_nocturna.jpg
+
+Potholes on road.jpg — KEmel49, CC BY-SA 4.0. Foto de una vía en Assam, India, usada como ejemplo visual de baches.
+https://commons.wikimedia.org/wiki/File:Potholes_on_road.jpg
+
+Plaza de Armas de Cajamarca amb la catedral al fons.jpg — Pitxiquin, CC BY-SA 4.0.
+https://commons.wikimedia.org/wiki/File:Plaza_de_Armas_de_Cajamarca_amb_la_catedral_al_fons.jpg
+
+Licencia de las fotos: https://creativecommons.org/licenses/by-sa/4.0/
+Cambios: copias reducidas y convertidas a WebP; las vistas recortan las fotos para encajarlas en sus tarjetas. Las fotos se distribuyen bajo CC BY-SA 4.0.
+
+Mapa de referencia: © OpenStreetMap contributors, datos bajo ODbL.
+https://www.openstreetmap.org/copyright
+
+Iconos exportados del Figma suministrado por el alumno. Se conservan los SVG originales en res/raw y copias PNG para Android.
+Tipografía Plus Jakarta Sans: proyecto Plus Jakarta Sans, SIL Open Font License 1.1; licencia incluida en res/raw/jakarta_ofl.txt.

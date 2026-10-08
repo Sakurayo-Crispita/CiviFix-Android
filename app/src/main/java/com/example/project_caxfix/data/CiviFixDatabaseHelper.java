@@ -12,7 +12,7 @@ public final class CiviFixDatabaseHelper extends SQLiteOpenHelper {
         }
         return instance;
     }
-    private CiviFixDatabaseHelper(Context context) { super(context, "civifix.db", null, 2); }
+    private CiviFixDatabaseHelper(Context context) { super(context, "civifix.db", null, 3); }
     @Override public void onConfigure(SQLiteDatabase db) { db.setForeignKeyConstraintsEnabled(true); }
     @Override public void onCreate(SQLiteDatabase db) {
         createUserTables(db);
@@ -20,7 +20,7 @@ public final class CiviFixDatabaseHelper extends SQLiteOpenHelper {
             "neighborhood TEXT, status TEXT NOT NULL, title TEXT NOT NULL, category TEXT NOT NULL, " +
             "description TEXT NOT NULL, image_uri TEXT, created_at INTEGER NOT NULL, " +
             "support_count INTEGER DEFAULT 0, comment_count INTEGER DEFAULT 0, " +
-            "author_user_id INTEGER REFERENCES users(id))");
+            "author_user_id INTEGER REFERENCES users(id), author_anonymous INTEGER NOT NULL DEFAULT 0)");
         createInteractionTables(db);
         sample(db, "Carolina Zapata", "Plazuela Belén", "Pendiente", "Luminaria apagada en Plazuela Belén", "Alumbrado Público",
             "El poste frente a la iglesia lleva varios días sin funcionar.", 7200000);
@@ -50,6 +50,17 @@ public final class CiviFixDatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("ALTER TABLE reports ADD COLUMN author_user_id INTEGER REFERENCES users(id)");
             createInteractionTables(db);
         }
+        if (oldVersion < 3) {
+            db.execSQL("ALTER TABLE reports ADD COLUMN author_anonymous INTEGER NOT NULL DEFAULT 0");
+            // Solo añade fotos a los tres reportes de demostración; conserva los reportes del alumno.
+            demoPhoto(db, "Bache profundo en Jr. Dos de Mayo", "demo_pothole");
+            demoPhoto(db, "Luminaria apagada en Plazuela Belén", "demo_lighting");
+            demoPhoto(db, "Residuos acumulados en Av. Perú", "demo_resolved");
+        }
+    }
+    private void demoPhoto(SQLiteDatabase db, String title, String drawable) {
+        db.execSQL("UPDATE reports SET image_uri = ? WHERE title = ? AND author_user_id IS NULL AND (image_uri IS NULL OR image_uri = '')",
+            new Object[]{"android.resource://com.example.project_caxfix/drawable/" + drawable, title});
     }
     private void sample(SQLiteDatabase db, String author, String neighborhood, String status,
                         String title, String category, String description, long age) {
@@ -57,6 +68,8 @@ public final class CiviFixDatabaseHelper extends SQLiteOpenHelper {
         v.put("author_name", author); v.put("neighborhood", neighborhood); v.put("status", status);
         v.put("title", title); v.put("category", category); v.put("description", description);
         v.put("created_at", System.currentTimeMillis() - age);
+        String drawable = category.equals("Baches y Pistas") ? "demo_pothole" : category.equals("Alumbrado Público") ? "demo_lighting" : "demo_resolved";
+        v.put("image_uri", "android.resource://com.example.project_caxfix/drawable/" + drawable);
         db.insertOrThrow("reports", null, v);
     }
 }

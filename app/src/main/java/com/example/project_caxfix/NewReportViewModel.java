@@ -11,7 +11,7 @@ public final class NewReportViewModel extends ViewModel {
     public final MutableLiveData<State> state = new MutableLiveData<>(new State(false, false, null));
     public Uri selectedImage;
     public boolean resultConsumed;
-    public void submit(Context context, long userId, String title, String category, String description) {
+    public void submit(Context context, long userId, String title, String category, String description, String location, boolean anonymous) {
         State current = state.getValue(); if (current != null && (current.saving || current.saved)) return;
         Context app = context.getApplicationContext(); Uri image = selectedImage;
         state.setValue(new State(true, false, null));
@@ -21,7 +21,7 @@ public final class NewReportViewModel extends ViewModel {
                 User user = new UserDao(app).get(userId);
                 if (user == null) throw new IllegalStateException("Sesión no disponible");
                 copied = ReportImageStore.copy(app, image);
-                new ReportDao(app).insert(user, title, category, description, copied);
+                new ReportDao(app).insert(user, title, category, description + "\n\nUbicación: " + location, copied, anonymous);
                 state.postValue(new State(false, true, null));
             } catch (Exception e) {
                 ReportImageStore.delete(app, copied);

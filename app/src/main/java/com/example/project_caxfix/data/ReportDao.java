@@ -13,8 +13,12 @@ public final class ReportDao {
     private final CiviFixDatabaseHelper helper;
     public ReportDao(Context context) { helper = CiviFixDatabaseHelper.get(context); }
     public long insert(User user, String title, String category, String description, String imageUri) {
+        return insert(user, title, category, description, imageUri, false);
+    }
+    public long insert(User user, String title, String category, String description, String imageUri, boolean anonymous) {
         ContentValues v = new ContentValues();
-        v.put("author_user_id", user.id); v.put("author_name", user.name); v.put("neighborhood", user.neighborhood);
+        v.put("author_user_id", user.id); v.put("author_name", anonymous ? "Vecino anónimo" : user.name); v.put("neighborhood", user.neighborhood);
+        v.put("author_anonymous", anonymous ? 1 : 0);
         v.put("status", "Pendiente"); v.put("title", title); v.put("category", category); v.put("description", description);
         v.put("image_uri", imageUri); v.put("created_at", System.currentTimeMillis());
         return helper.getWritableDatabase().insertOrThrow("reports", null, v);
@@ -65,6 +69,11 @@ public final class ReportDao {
     }
     public boolean deleteOwned(long reportId, long userId) {
         return helper.getWritableDatabase().delete("reports", "id = ? AND author_user_id = ?", new String[]{String.valueOf(reportId), String.valueOf(userId)}) == 1;
+    }
+    public int supportsGiven(long userId) {
+        try (Cursor c = helper.getReadableDatabase().rawQuery("SELECT COUNT(*) FROM supports WHERE user_id = ?", new String[]{String.valueOf(userId)})) {
+            return c.moveToFirst() ? c.getInt(0) : 0;
+        }
     }
     private Report read(Cursor c) {
         return new Report(number(c,"id"), number(c,"author_user_id"), text(c,"author_name"), text(c,"neighborhood"),

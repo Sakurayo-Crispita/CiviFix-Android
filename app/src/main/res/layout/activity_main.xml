@@ -1,78 +1,76 @@
 <?xml version='1.0' encoding='utf-8'?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/white" tools:context=".MainActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="20dp">
-
-
-        <com.google.android.material.card.MaterialCardView android:id="@+id/cardHeader" android:layout_width="0dp" android:layout_height="150dp" app:cardBackgroundColor="@color/colorPrimary" app:cardCornerRadius="16dp" app:cardElevation="2dp" app:strokeWidth="0dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent">
-
-                <ImageView android:id="@+id/imgHeader" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:contentDescription="Imagen Cajamarca" tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-
-                <View android:layout_width="match_parent" android:layout_height="match_parent" android:background="#66000000" />
-
-
-                <LinearLayout android:id="@+id/llHeaderBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="16dp" android:gravity="center_vertical" android:orientation="horizontal" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:contentDescription="Logo CiviFix" android:src="@android:drawable/ic_menu_mylocation" app:tint="@color/white" />
-
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:text="CiviFix • Cajamarca" android:textColor="@color/white" android:textSize="14sp" android:textStyle="bold" />
-
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="@color/colorBackground">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingHorizontal="16dp" android:paddingBottom="32dp">
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/white" app:cardCornerRadius="12dp" app:cardElevation="1dp" app:strokeWidth="0dp" android:id="@+id/cardHeader" android:layout_marginTop="8dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@drawable/ic_figma_brand" android:contentDescription="@null" android:background="@drawable/bg_mint_circle" android:padding="7dp" />
+                    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="CIVIFIX CAJAMARCA" android:textSize="12sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginStart="4dp" />
                 </LinearLayout>
-
-
-                <TextView android:id="@+id/tvHeaderTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_margin="16dp" android:text="Juntos mejoramos Cajamarca" android:textColor="@color/white" android:textSize="22sp" android:textStyle="bold" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                <FrameLayout android:layout_width="match_parent" android:layout_height="144dp" android:layout_marginTop="4dp">
+                    <com.google.android.material.imageview.ShapeableImageView android:layout_width="match_parent" android:layout_height="144dp" android:id="@+id/imgHeader" android:src="@drawable/img_cajamarca_plaza" android:scaleType="centerCrop" android:contentDescription="Plaza de Cajamarca, imagen del diseño" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Small" />
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_gravity="bottom" android:padding="12dp" android:background="@drawable/bg_photo_gradient">
+                        <ImageView android:layout_width="14dp" android:layout_height="14dp" android:src="@drawable/ic_figma_official" android:contentDescription="@null" />
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="Plataforma Vecinal Oficial" android:textSize="11sp" android:textColor="@color/white" android:includeFontPadding="false" android:layout_weight="1" android:layout_marginStart="4dp" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Barrios Unidos" android:textSize="11sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:background="@drawable/bg_soft" android:paddingHorizontal="8dp" android:paddingVertical="2dp" />
+                    </LinearLayout>
+                </FrameLayout>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Juntos mejoramos Cajamarca" android:textSize="24sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:id="@+id/tvHeaderTitle" android:fontFamily="@font/jakarta_bold" android:layout_marginTop="16dp" android:lineSpacingExtra="3dp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Reporta baches, alumbrado público, limpieza y espacios públicos en tu barrio en segundos." android:textSize="14sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:layout_marginTop="4dp" android:lineSpacingExtra="3dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:background="@drawable/bg_soft" android:paddingVertical="12dp" android:layout_marginTop="16dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="0" android:textSize="18sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvWelcomeResolved" android:fontFamily="@font/jakarta_semibold" android:gravity="center" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Arreglos" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="0" android:textSize="18sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvWelcomeNeighborhoods" android:fontFamily="@font/jakarta_semibold" android:gravity="center" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Barrios" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1">
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Local" android:textSize="18sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvWelcomeMode" android:fontFamily="@font/jakarta_semibold" android:gravity="center" />
+                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Prototipo" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:gravity="center" android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
-
-        <TextView android:id="@+id/tvTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="Ingresar a tu cuenta" android:textColor="@color/colorTextPrimary" android:textSize="22sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/cardHeader" />
-
-
-        <TextView android:id="@+id/tvSubtitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Accede para seguir tus reportes y apoyar propuestas de vecinos." android:textColor="@color/colorTextSecondary" android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvTitle" />
-
-
-        <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilEmailOrDni" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="20dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
-
-            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etEmailOrDni" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Correo electrónico o DNI" android:inputType="textEmailAddress" android:textColor="@color/colorTextPrimary" android:textSize="15sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout android:id="@+id/tilPassword" style="@style/Widget.Material3.TextInputLayout.FilledBox" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="12dp" app:boxBackgroundColor="@color/colorSurfaceVariant" app:boxCornerRadiusBottomEnd="12dp" app:boxCornerRadiusBottomStart="12dp" app:boxCornerRadiusTopEnd="12dp" app:boxCornerRadiusTopStart="12dp" app:boxStrokeWidth="0dp" app:boxStrokeWidthFocused="0dp" app:endIconMode="password_toggle" app:passwordToggleEnabled="true" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tilEmailOrDni">
-
-            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Contraseña" android:inputType="textPassword" android:textColor="@color/colorTextPrimary" android:textSize="15sp" android:maxLength="128" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <TextView android:id="@+id/tvForgotPassword" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:padding="4dp" android:text="¿Olvidaste tu contraseña?" android:textColor="@color/colorPrimary" android:textSize="14sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@id/tilPassword" />
-
-
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogin" android:layout_width="0dp" android:layout_height="54dp" android:layout_marginTop="16dp" android:text="Iniciar Sesión" android:textSize="16sp" android:textStyle="bold" app:cornerRadius="12dp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvForgotPassword" />
-
-
-        <TextView android:id="@+id/tvDividerText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="o ingresa con" android:textColor="@color/colorTextSecondary" android:textSize="13sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnLogin" />
-
-
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnDniKey" style="?attr/materialButtonOutlinedStyle" android:layout_width="0dp" android:layout_height="52dp" android:layout_marginTop="16dp" android:text="DNI Electrónico / Clave Perú" android:textColor="@color/colorTextPrimary" android:textSize="14sp" app:cornerRadius="12dp" app:strokeColor="@color/colorTextSecondary" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvDividerText" />
-
-
-        <com.google.android.material.button.MaterialButton android:id="@+id/btnGoogle" style="?attr/materialButtonOutlinedStyle" android:layout_width="0dp" android:layout_height="52dp" android:layout_marginTop="10dp" android:text="Continuar con Google" android:textColor="@color/colorTextPrimary" android:textSize="14sp" app:cornerRadius="12dp" app:strokeColor="@color/colorTextSecondary" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnDniKey" />
-
-
-        <LinearLayout android:id="@+id/llRegisterContainer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginBottom="12dp" android:orientation="horizontal" android:padding="4dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/btnGoogle" app:layout_constraintVertical_bias="1.0">
-
-            <TextView android:id="@+id/tvNoAccountPrompt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¿No tienes una cuenta aún? " android:textColor="@color/colorTextSecondary" android:textSize="14sp" />
-
-            <TextView android:id="@+id/tvRegisterAction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Regístrate como vecino de Cajamarca" android:textColor="@color/colorPrimary" android:textSize="14sp" android:textStyle="bold" />
-
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/white" app:cardCornerRadius="12dp" app:cardElevation="1dp" app:strokeWidth="0dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ingresar a tu cuenta" android:textSize="20sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:id="@+id/tvTitle" android:fontFamily="@font/jakarta_semibold" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Accede para seguir tus reportes y apoyar propuestas de vecinos." android:textSize="12sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvSubtitle" android:layout_marginTop="4dp" android:lineSpacingExtra="3dp" />
+                <Space android:layout_width="match_parent" android:layout_height="20dp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Correo electrónico o DNI" android:textSize="12sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginBottom="6dp" />
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/CiviFix.Input" android:id="@+id/tilEmailOrDni" app:startIconDrawable="@drawable/ic_figma_identity" app:startIconTint="@null">
+                    <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="48dp" android:id="@+id/etEmailOrDni" android:paddingHorizontal="12dp" android:paddingVertical="10dp" android:textSize="14sp" android:inputType="textEmailAddress" android:hint="ej. 71829384 o vecino@cajamarca.pe" android:gravity="center_vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Space android:layout_width="match_parent" android:layout_height="16dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="Contraseña" android:textSize="12sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:fontFamily="@font/jakarta_semibold" android:layout_marginBottom="6dp" android:layout_weight="1" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="¿Olvidaste tu contraseña?" android:textSize="11sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvForgotPassword" android:fontFamily="@font/jakarta_semibold" android:paddingVertical="8dp" />
+                </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout android:layout_width="match_parent" android:layout_height="wrap_content" style="@style/CiviFix.Input" android:id="@+id/tilPassword" app:startIconDrawable="@drawable/ic_figma_lock" app:startIconTint="@null" app:endIconMode="password_toggle" app:endIconDrawable="@drawable/ic_figma_eye" app:endIconTint="@null">
+                    <com.google.android.material.textfield.TextInputEditText android:layout_width="match_parent" android:layout_height="48dp" android:id="@+id/etPassword" android:paddingHorizontal="12dp" android:paddingVertical="10dp" android:textSize="14sp" android:inputType="textPassword" android:hint="••••••••" android:gravity="center_vertical" android:maxLength="128" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Space android:layout_width="match_parent" android:layout_height="20dp" />
+                <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnLogin" style="@style/CiviFix.Button" android:text="Iniciar Sesión" app:icon="@drawable/ic_figma_login" app:iconTint="@null" app:iconSize="16dp" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginVertical="24dp">
+                    <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="@color/colorSurfaceVariant" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="o ingresa con" android:textSize="12sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvDividerText" android:paddingHorizontal="12dp" />
+                    <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" android:background="@color/colorSurfaceVariant" />
+                </LinearLayout>
+                <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnDniKey" style="@style/CiviFix.Button.Secondary" android:text="DNI Electrónico / Clave Perú" app:icon="@drawable/ic_figma_fingerprint" app:iconTint="@null" app:iconSize="16dp" />
+                <Space android:layout_width="match_parent" android:layout_height="8dp" />
+                <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnGoogle" style="@style/CiviFix.Button.Secondary" android:text="Continuar con Google" app:icon="@drawable/ic_figma_google" app:iconTint="@null" app:iconSize="16dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="@+id/llRegisterContainer" android:background="@drawable/bg_soft" android:padding="16dp" android:layout_marginTop="24dp">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="¿No tienes una cuenta aún?" android:textSize="14sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvNoAccountPrompt" android:gravity="center" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Regístrate como vecino de Cajamarca →" android:textSize="14sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvRegisterAction" android:fontFamily="@font/jakarta_semibold" android:gravity="center" android:layout_marginTop="8dp" />
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="24dp">
+            <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_figma_shield" android:contentDescription="@null" />
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Iniciativa ciudadana y Municipalidad Provincial de Cajamarca" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:gravity="center" android:layout_marginStart="8dp" />
+        </LinearLayout>
+        <TextView android:id="@+id/tvCredits" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Créditos de imágenes" android:textSize="11sp" android:textColor="@color/colorPrimary" android:gravity="center" android:paddingTop="16dp" />
+    </LinearLayout>
 </ScrollView>

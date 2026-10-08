@@ -1,38 +1,28 @@
-<?xml version='1.0' encoding='utf-8'?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="8dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="16dp" app:cardElevation="2dp" app:strokeWidth="0dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp">
-
-
-        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/ivAuthorAvatar" android:layout_width="40dp" android:layout_height="40dp" android:contentDescription="Foto de perfil del usuario" android:scaleType="centerCrop" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full" tools:src="@tools:sample/avatars" />
-
-
-        <TextView android:id="@+id/tvAuthorName" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:layout_marginEnd="8dp" android:text="Cristopher Cruzado" android:textColor="@color/colorTextPrimary" android:textSize="15sp" android:textStyle="bold" app:layout_constraintEnd_toStartOf="@id/tvStatusBadge" app:layout_constraintStart_toEndOf="@id/ivAuthorAvatar" app:layout_constraintTop_toTopOf="@id/ivAuthorAvatar" />
-
-
-        <TextView android:id="@+id/tvNeighborhoodAndTime" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="12dp" android:layout_marginTop="2dp" android:layout_marginEnd="8dp" android:text="Barrio San Sebastián • Hace 45 min" android:textColor="@color/colorTextSecondary" android:textSize="12sp" app:layout_constraintEnd_toStartOf="@id/tvStatusBadge" app:layout_constraintStart_toEndOf="@id/ivAuthorAvatar" app:layout_constraintTop_toBottomOf="@id/tvAuthorName" />
-
-
-        <TextView android:id="@+id/tvStatusBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_status_chip" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:text="En Atención" android:textColor="#E65100" android:textSize="12sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/ivAuthorAvatar" />
-
-
-        <TextView android:id="@+id/tvReportTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="Hundimiento y bache profundo en Jr. Dos de Mayo" android:textColor="@color/colorTextPrimary" android:textSize="18sp" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/ivAuthorAvatar" />
-
-
-        <TextView android:id="@+id/tvReportDescription" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:ellipsize="end" android:maxLines="2" android:text="El bache se generó tras las lluvias y está causando accidentes leves de transporte público y privado. Se necesita reparación urgente." android:textColor="@color/colorTextSecondary" android:textSize="14sp" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvReportTitle" />
-
-
-        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/ivReportImage" android:layout_width="0dp" android:layout_height="180dp" android:layout_marginTop="12dp" android:contentDescription="Fotografía del reporte" android:scaleType="centerCrop" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/tvReportDescription" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" tools:src="@tools:sample/backgrounds/scenic" />
-
-
-        <LinearLayout android:id="@+id/llInteractions" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:gravity="center_vertical" android:orientation="horizontal" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/ivReportImage">
-
-            <TextView android:id="@+id/tvSupportCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20dp" android:drawablePadding="6dp" android:gravity="center_vertical" android:text="24 apoyos comunitarios" android:textColor="@color/colorTextSecondary" android:textSize="13sp" app:drawableStartCompat="@android:drawable/btn_star_big_on" app:drawableTint="@color/colorPrimary" android:minHeight="48dp" android:clickable="true" android:focusable="true" />
-
-            <TextView android:id="@+id/tvCommentCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="6dp" android:gravity="center_vertical" android:text="8 comentarios" android:textColor="@color/colorTextSecondary" android:textSize="13sp" app:drawableStartCompat="@android:drawable/stat_notify_chat" app:drawableTint="@color/colorTextSecondary" android:minHeight="48dp" android:clickable="true" android:focusable="true" />
-
+<?xml version="1.0" ?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="16dp" app:cardBackgroundColor="@color/white" app:cardCornerRadius="12dp" app:cardElevation="1dp" app:strokeWidth="0dp">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView android:layout_width="40dp" android:layout_height="40dp" android:id="@+id/ivAuthorAvatar" android:src="@drawable/ic_figma_user" android:background="@drawable/bg_mint_circle" android:padding="12dp" android:contentDescription="Vecino que reportó"/>
+            <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="1" android:layout_marginStart="8dp" android:layout_marginEnd="8dp">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Vecino" android:textSize="12sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:id="@+id/tvAuthorName" android:fontFamily="@font/jakarta_semibold"/>
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Barrio · Hace un momento" android:textSize="10sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvNeighborhoodAndTime" android:layout_marginTop="3dp"/>
+            </LinearLayout>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reportado" android:textSize="10sp" android:textColor="@color/colorOrange" android:includeFontPadding="false" android:id="@+id/tvStatusBadge" android:fontFamily="@font/jakarta_semibold" android:background="@drawable/bg_status_chip" android:paddingHorizontal="8dp" android:paddingVertical="4dp" android:layout_gravity="top"/>
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Título del reporte" android:textSize="16sp" android:textColor="@color/colorTextPrimary" android:includeFontPadding="false" android:id="@+id/tvReportTitle" android:fontFamily="@font/jakarta_semibold" android:layout_marginTop="16dp"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Descripción del reporte" android:textSize="14sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvReportDescription" android:layout_marginTop="4dp" android:lineSpacingExtra="3dp"/>
+        <com.google.android.material.imageview.ShapeableImageView android:layout_width="match_parent" android:layout_height="192dp" android:id="@+id/ivReportImage" android:layout_marginTop="16dp" android:scaleType="centerCrop" android:contentDescription="Evidencia fotográfica del reporte" app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Small"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Reportado     En cuadrilla     Reparación     Listo" android:textSize="10sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvProgressLabels" android:background="@drawable/bg_soft" android:padding="8dp" android:layout_marginTop="16dp"/>
+        <com.google.android.material.progressindicator.LinearProgressIndicator android:layout_width="match_parent" android:layout_height="4dp" android:id="@+id/reportProgress" android:layout_marginHorizontal="8dp" android:progress="25" app:indicatorColor="@color/colorPrimary" app:trackColor="@color/colorSurfaceVariant"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="16dp">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:text="0 apoyos comunitarios" android:textSize="11sp" android:textColor="@color/colorPrimary" android:includeFontPadding="false" android:id="@+id/tvSupportCount" android:fontFamily="@font/jakarta_semibold" android:layout_weight="1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0 comentarios" android:textSize="11sp" android:textColor="@color/colorTextSecondary" android:includeFontPadding="false" android:id="@+id/tvCommentCount"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginTop="12dp">
+            <com.google.android.material.button.MaterialButton android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/btnSupport" style="@style/CiviFix.Button.Secondary" android:text="Apoyar" android:layout_weight="1" android:textSize="12sp"/>
+            <com.google.android.material.button.MaterialButton android:layout_width="0dp" android:layout_height="wrap_content" android:id="@+id/btnComment" style="@style/CiviFix.Button.Secondary" android:text="Comentar" android:layout_weight="1" android:layout_marginHorizontal="4dp" android:textSize="12sp"/>
+            <com.google.android.material.button.MaterialButton android:layout_width="48dp" android:layout_height="48dp" android:id="@+id/btnShare" style="@style/CiviFix.Button.Secondary" app:icon="@drawable/ic_figma_share" app:iconTint="@null" app:iconGravity="textStart" android:contentDescription="Compartir reporte"/>
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/btnNewReport" style="@style/CiviFix.Button" android:text="Reportar nueva incidencia →" app:icon="@drawable/ic_figma_official" app:iconTint="@null" app:iconSize="16dp" android:layout_marginTop="8dp"/>
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
